@@ -76,3 +76,11 @@ Generator queries should be adapted to the endpoint and desired metadata. Config
 The author confirmed localhost measurement and disabled browser caching. The supplied Network-panel screenshot shows six HTTP 200 fetch requests, each with limit=20, in order: neusch 142 ms; italy 117 ms; italy cast 114 ms; neusch 88 ms; muse 129 ms; museum 48 ms. Range 48–142 ms; median 115.5 ms. These are a second sample set, not a replacement or relabeling of the Berlin typing measurements. The screenshot was read directly; request bodies and database execution times are not visible. Browser cache disabling does not establish cold database/OS caches.
 
 The manuscript reports local search-service durations on the loaded database. Catalog source is not requested as a condition for reporting these observations. SPARQL interaction is not timed; functional endpoint compatibility remains separate. No search repetition per remote endpoint is needed with the local catalog and search configuration held fixed.
+
+## Figure, contribution, and reproducibility revision
+
+Both layouts now use the compact editable SVG converted to a vector PDF. The original figure is retained. The introduction explains independent catalog maintenance, vocabulary curation, reuse of the selected IRI across actions, and CSV/template configuration without per-dataset frontend implementation. Related-work distinctions are architectural, with no comparative superiority claim.
+
+The author supplied https://zenodo.org/records/22958238 as the archive for the 20-million-entity CSV. The web tool could not access the record during this edit; archive contents, filename, checksum, and license were not independently inspected. No filename, DOI, or archive metadata was inferred. The manuscript and README distinguish Quick Start from the large-catalog import/search path. The exact six-query capture is replayable; the earlier Berlin typing sequence lacks per-request prefixes.
+
+The proposed demonstration now has four preloaded hands-on visitor actions followed by an operator-led catalog/template adaptation walkthrough.
