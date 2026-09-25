@@ -3,7 +3,7 @@
 **Title:** TriplePeek: From Entity Search to Live Linked Data Exploration  
 **Authors:** Albert Khomich, Mohamed Ahmed Sherif, Axel-Cyrille Ngonga Ngomo
 
-**Status:** Technical system/demo draft, updated 25 September 2026 with author information and an explicit six-endpoint test inventory and six observed search timings for a 20-million-entity catalog.
+**Status:** Technical system/demo draft, updated 25 September 2026 with author information and an explicit six-endpoint test inventory and two sets of six observed search timings for a 20-million-entity catalog.
 
 ## Open in Overleaf
 
@@ -39,4 +39,4 @@ Or run `pdflatex`, `bibtex`, and `pdflatex` twice. Both entry points were also c
 - `EDITOR_NOTES.md`: provenance, validation scope, and remaining author decisions.
 - `vendor/`: upstream class sources, license notices, and provenance.
 
-The revised draft incorporates Albert Khomich's exploratory endpoint tests and qualitative experience with a 20-million-entity catalog. These tests were not rerun during the editorial update. The six author-supplied search durations are reported as exploratory observations, not a controlled benchmark; no numerical endpoint latency, throughput, or user-study results are asserted. The draft includes the demo plan and ethical-data section. The tests took place on 25 September 2026 on a VMware VM with 8 vCPUs (Intel Xeon Platinum 8462Y+), 31 GiB RAM, and a 1 TB ext4 virtual disk; application and database ran in separate containers on this VM. Evaluation separates local search performance from button and catalog-generator compatibility; external endpoint response times are outside scope. Prepare supporting demo materials before submission.
+The revised draft incorporates Albert Khomich's exploratory endpoint tests and qualitative experience with a 20-million-entity catalog. These tests were not rerun during the editorial update. The author-supplied search durations, including the additional localhost Network-panel capture with browser caching disabled, are reported as exploratory observations, not a controlled benchmark; no numerical endpoint latency, throughput, or user-study results are asserted. The draft includes the demo plan and ethical-data section. The tests took place on 25 September 2026 on a VMware VM with 8 vCPUs (Intel Xeon Platinum 8462Y+), 31 GiB RAM, and a 1 TB ext4 virtual disk; application and database ran in separate containers on this VM. Evaluation separates local search performance from button and catalog-generator compatibility; external endpoint response times are outside scope. Prepare supporting demo materials before submission.
