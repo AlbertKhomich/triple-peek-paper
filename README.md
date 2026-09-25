@@ -3,7 +3,7 @@
 **Title:** TriplePeek: From Entity Search to Live Linked Data Exploration  
 **Authors:** Albert Khomich, Mohamed Ahmed Sherif, Axel-Cyrille Ngonga Ngomo
 
-**Status:** Technical system/demo draft, updated 25 September 2026 with author information and author-reported endpoint and 20-million-entity catalog tests.
+**Status:** Technical system/demo draft, updated 25 September 2026 with author information and an explicit six-endpoint test inventory and six observed search timings for a 20-million-entity catalog.
 
 ## Open in Overleaf
 
@@ -39,4 +39,4 @@ Or run `pdflatex`, `bibtex`, and `pdflatex` twice. Both entry points were also c
 - `EDITOR_NOTES.md`: provenance, validation scope, and remaining author decisions.
 - `vendor/`: upstream class sources, license notices, and provenance.
 
-The revised draft incorporates Albert Khomich's exploratory endpoint tests and qualitative experience with a 20-million-entity catalog. These tests were not rerun during the editorial update; no numerical latency, throughput, or user-study results are asserted. The draft includes the demo plan and ethical-data section. Document the test environment and prepare supporting demo materials before submission.
+The revised draft incorporates Albert Khomich's exploratory endpoint tests and qualitative experience with a 20-million-entity catalog. These tests were not rerun during the editorial update. The six author-supplied search durations are reported as exploratory observations, not a controlled benchmark; no numerical endpoint latency, throughput, or user-study results are asserted. The draft includes the demo plan and ethical-data section. Document the test environment and prepare supporting demo materials before submission.

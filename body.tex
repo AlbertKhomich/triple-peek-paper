@@ -68,10 +68,28 @@ Parseable RDF graph responses are displayed as subject--predicate--object tables
 The bundled Wikidata catalog contains 10,000 rows and 10,000 distinct IRIs with four fields: IRI, label, type label, and country. These counts were obtained directly from the distributed CSV. Its generation query selects castles with English labels, an image, and coordinates, enriching them with type and country labels. A visitor searches for \emph{Neuschwanstein Castle}, identifies the resource, and opens Describe to inspect its graph. The Details action requests an image, coordinates, and an English description. The Embedding action uses SERVICE to retrieve a precomputed Keci embedding from a separate endpoint. It demonstrates cross-source retrieval, not embedding generation or similarity search. Live results depend on the configured services and may differ from catalog metadata.
 
 \paragraph{Endpoint interoperability.}
-We tested \tp{} with public Wikidata and DBpedia endpoints, the public SemRepo endpoint, and DICE-hosted endpoints exposing Wikidata, DBpedia, and a university corpus (Uni corpus). SemRepo describes research software and its scholarly context~\cite{semrepo2026}. The tested deployments included Virtuoso, Tentris, and Apache Jena Fuseki. These exploratory checks extend the evidence beyond the bundled example to multiple datasets and endpoint implementations; they do not constitute a complete query-form or backend compatibility matrix.
+We successfully tested DESCRIBE against all six endpoints in Table~\ref{tab:endpoints}, covering embeddings, general knowledge, and research software. SemRepo links GitHub repositories to their scholarly context~\cite{semrepo2026}. Selected custom actions described above were also exercised, without asserting every action on every endpoint. Responses appeared immediate during manual use; no endpoint latency measurements are reported. Earlier exploratory use additionally included a DICE university corpus and Fuseki, for which endpoint details remain unspecified.
 
-\paragraph{Large-catalog experience.}
-In an exploratory test, we loaded a catalog of 20 million entities, with each entity represented by one row containing labels and aggregated types. Interactive search remained responsive during manual use. This is a qualitative observation, not a measured response-time bound: no controlled timing data, hardware specification, query workload, or concurrency profile are reported here. The observation concerns local catalog search and does not establish the latency of live SPARQL actions. Catalog size here counts entities after aggregation, rather than triples or duplicate input rows.
+\begin{table*}[t]
+\centering
+\caption{Endpoints tested with DESCRIBE. DICE snapshot and Tentris version information was supplied by the authors. Linked service documentation identifies the public-service backends; their tested versions were not supplied.}
+\label{tab:endpoints}
+\begin{tabular}{@{}p{0.41\textwidth}p{0.35\textwidth}p{0.15\textwidth}@{}}
+\toprule
+Endpoint & Dataset or snapshot & Backend \\
+\midrule
+\url{https://sparql.embeddings.cc/sparql} & DBpedia and Wikidata embeddings & Tentris 1.0.0 \\
+\url{https://dbpedia.data.dice-research.org/sparql} & \href{https://databus.dbpedia.org/dbpedia/collections/dbpedia-snapshot-2022-12}{DBpedia snapshot 2022-12} & Tentris 1.0.0 \\
+\url{https://wikidata.data.dice-research.org/sparql} & \href{https://dumps.wikimedia.org/wikidatawiki/entities/20250122}{Wikidata 2025-01-22 truthy beta} & Tentris 1.0.0 \\
+\url{https://query.wikidata.org/sparql} & Official Wikidata Query Service & \href{https://wikitech.wikimedia.org/wiki/Wikidata_query_service/Runbook}{Blazegraph} \\
+\url{https://dbpedia.org/sparql} & Official DBpedia public endpoint & \href{https://www.dbpedia.org/resources/sparql/}{Virtuoso} \\
+\url{https://semrepo.org/sparql} & GitHub repositories linked to research & \href{https://semrepo.org/sparql}{Virtuoso} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\paragraph{Large-catalog observations.}
+TriplePeek and PostgreSQL ran in separate Docker Compose containers on one VM with eight CPU cores and 32\,GB RAM. Its catalog held 20 million entities, one row per entity with labels and aggregated types. While typing \emph{Berlin place}, six browser Network-panel search-request durations were 502, 52, 42, 83, 184, and 124\,ms (range 42--502\,ms; median 103.5\,ms). These HTTP durations include the browser--application exchange, exclude the 300\,ms pre-request debounce, and measure neither SQL alone nor remote SPARQL execution. They sample one typing session, not repeated identical queries. Exact prefixes, cache state, storage, and concurrency were not supplied; representative latency and throughput require a controlled workload.
 
 \paragraph{Conference deployment.}
 The proposed demonstration runs the application and PostgreSQL on a laptop with a preloaded catalog. Visitors can search, inspect RDF terms, open action panels, and follow geographic or image views. A short configuration walkthrough then shows how replacing the CSV and adding a query file adapts the interface to another dataset. Internet access is needed for live endpoint queries and external media. The conference plan includes preparing a recorded walkthrough and captured example responses as an explicitly labeled fallback for service outages.
