@@ -3,7 +3,7 @@
 **Title:** TriplePeek: From Entity Search to Live Linked Data Exploration  
 **Authors:** Albert Khomich, Mohamed Ahmed Sherif, Axel-Cyrille Ngonga Ngomo
 
-**Status:** Technical system/demo draft, updated 25 September 2026 with author information and an explicit six-endpoint test inventory and two sets of six observed search timings for a 17,795,730-entity catalog.
+**Status:** Technical system/demo draft, updated 25 September 2026 with author information and an explicit six-endpoint test inventory and seven visible search-request timings for a 17,795,730-entity catalog.
 
 ## Open in Overleaf
 
@@ -40,7 +40,7 @@ Or run `pdflatex`, `bibtex`, and `pdflatex` twice. Both entry points were also c
 - `EDITOR_NOTES.md`: provenance, validation scope, and remaining author decisions.
 - `vendor/`: upstream class sources, license notices, and provenance.
 
-The revised draft incorporates Albert Khomich's exploratory endpoint tests and qualitative experience with a 17,795,730-entity catalog. These tests were not rerun during the editorial update. The author-supplied search durations, including the additional localhost Network-panel capture with browser caching disabled, are reported as exploratory observations, not a controlled benchmark; no numerical endpoint latency, throughput, or user-study results are asserted. The draft includes the demo plan and ethical-data section. The tests took place on 25 September 2026 on a VMware VM with 8 vCPUs (Intel Xeon Platinum 8462Y+), 31 GiB RAM, and a 1 TB ext4 virtual disk; application and database ran in separate containers on this VM. Evaluation separates local search performance from button and catalog-generator compatibility; external endpoint response times are outside scope. Prepare supporting demo materials before submission.
+The draft incorporates author-supplied endpoint compatibility checks and a browser capture with the 17,795,730-entity catalog loaded. Seven visible search requests took 256–1,370 ms (median 420 ms); the panel footer lists 17 requests, but unseen rows are not analyzed. The updated experiment environment is an Intel Xeon Silver 4310 server (12 physical cores, 24 hardware threads, 2.10 GHz), 62 GiB RAM, and two Samsung 240 GB SSDs in RAID 1 with ext4 for PostgreSQL data. Application and database use Docker Compose. Tests are dated 25 September 2026. This supersedes the earlier VM description and timing samples in the manuscript. External SPARQL response times are outside scope.
 
 ## Reproducibility paths
 
@@ -48,4 +48,12 @@ The revised draft incorporates Albert Khomich's exploratory endpoint tests and q
 Clone https://github.com/dice-group/triple-peek and follow https://dice-group.github.io/triple-peek/ using the bundled 10,000-entity catalog. This reproduces the live visitor demonstration: search for Neuschwanstein Castle, navigate with Describe, open Details, and retrieve the precomputed representation with Embedding. Live actions require the configured endpoints. The separate catalog/template configuration walkthrough is operator-led.
 
 ### Large-catalog experiment
-Download the archived 17,795,730-entity CSV from https://zenodo.org/records/22958238, then follow the documented validation and PostgreSQL import pipeline. With the catalog loaded, use localhost and disable browser caching. Reproduce the captured search request sequence with limit=20: neusch, italy, italy cast, neusch, muse, museum. Record request durations in the browser Network panel. These observations are distinct from the earlier Berlin place typing session, whose exact per-request prefixes were not recorded. Search operates locally; do not time external SPARQL services or repeat the same search workload merely because the remote endpoint changes.
+Download the archived 17,795,730-entity CSV from https://zenodo.org/records/22963871 and follow the documented validation and PostgreSQL import pipeline. For live actions on these DBpedia resources, replace the default endpoint in `.env` with:
+
+```dotenv
+SPARQL_ENDPOINT=https://dbpedia.data.dice-research.org/sparql
+```
+
+Apply the updated configuration through Docker Compose and use DBpedia-compatible SPARQL button templates. The author reports that this Tentris service hosts the full DBpedia 2022-12 snapshot used for the setup. The official DBpedia service has limited dataset coverage and query limits (https://www.dbpedia.org/resources/sparql/); it is not used for this large-catalog exploration path. Endpoint configuration affects live actions, not the independent local search workload.
+
+With the catalog loaded and browser caching disabled, issue these searches in order with `limit=20`: `dublin`, `irlnad`, `irland`, `paderborn`, `hein nixdor`, `hein nixdorf`, `henin nixdorf`. Preserve the misspellings, which are present in the supplied capture. Record HTTP request durations in the browser Network panel. The seven visible samples are 707, 307, 1,370, 305, 636, 420, and 256 ms. Do not infer the ten unseen requests from the footer's total of 17. Do not time external SPARQL services or repeat search merely because the remote endpoint changes.
