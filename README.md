@@ -1,15 +1,16 @@
 # TriplePeek paper
 
 **Title:** TriplePeek: From Entity Search to Live Linked Data Exploration  
-**Author:** Albert Khomich  
-**Status:** Technical system/demo draft, prepared 24 September 2026. Affiliation and country deliberately remain editable placeholders.
+**Authors:** Albert Khomich, Mohamed Ahmed Sherif, Axel-Cyrille Ngonga Ngomo
+
+**Status:** Technical system/demo draft, updated 25 September 2026 with author information and author-reported endpoint and 20-million-entity catalog tests.
 
 ## Open in Overleaf
 
 1. Upload the project ZIP as a new Overleaf project.
 2. Choose `main.tex` as the main document and pdfLaTeX with a recent TeX Live version (2025 or newer).
 3. Recompile; Overleaf runs the bibliography automatically. If stale citations remain, recompile from scratch.
-4. Edit `metadata.tex` for your affiliation and country; add email, ORCID, and any coauthors in `main.tex`.
+4. Author names, the shared DICE/Paderborn affiliation, all three ORCIDs, and Albert Khomich's email are in `metadata.tex`. Both layouts use this metadata.
 
 The diagram is included as a vector PDF so Overleaf does not require SVG conversion or shell escape. The original SVG is retained. Standard LaTeX packages, both document classes, and both bibliography styles are included or available in Overleaf's TeX distribution.
 
@@ -38,4 +39,4 @@ Or run `pdflatex`, `bibtex`, and `pdflatex` twice. Both entry points were also c
 - `EDITOR_NOTES.md`: provenance, validation scope, and remaining author decisions.
 - `vendor/`: upstream class sources, license notices, and provenance.
 
-No conference submission, external publication, endpoint load test, user study, or performance benchmark was performed. The draft includes the required demo plan and ethical-data section, but supporting demo materials and live checks still need to be completed before submission.
+The revised draft incorporates Albert Khomich's exploratory endpoint tests and qualitative experience with a 20-million-entity catalog. These tests were not rerun during the editorial update; no numerical latency, throughput, or user-study results are asserted. The draft includes the demo plan and ethical-data section. Document the test environment and prepare supporting demo materials before submission.

@@ -1,6 +1,6 @@
 % Main Overleaf document: The Web Conference 2027 demo draft.
 % Use pdfLaTeX (TeX Live 2025 or newer) and BibTeX.
-% Fill the affiliation in metadata.tex before submission.
+% Shared author metadata is maintained in metadata.tex.
 \documentclass[sigconf,screen,review]{acmart}
 \setcopyright{none}
 \settopmatter{printacmref=true}
@@ -14,9 +14,16 @@
 \input{preamble}
 \title{\PaperTitle}
 \author{\PaperAuthor}
-\affiliation{\institution{\PaperAffiliation}\country{\PaperCountry}}
-% Add a verified email and ORCID here if desired.
-\renewcommand{\shortauthors}{A. Khomich}
+\orcid{\FirstOrcid}
+\email{\AuthorEmail}
+\affiliation{\institution{\PaperAffiliation}\city{\PaperCity}\country{\PaperCountry}}
+\author{\SecondAuthor}
+\orcid{\SecondOrcid}
+\affiliation{\institution{\PaperAffiliation}\city{\PaperCity}\country{\PaperCountry}}
+\author{\ThirdAuthor}
+\orcid{\ThirdOrcid}
+\affiliation{\institution{\PaperAffiliation}\city{\PaperCity}\country{\PaperCountry}}
+\renewcommand{\shortauthors}{Khomich et al.}
 \begin{document}
 \begin{abstract}
 \input{abstract}
@@ -28,6 +35,8 @@
 \ccsdesc[300]{Information systems~Information retrieval}
 \keywords{knowledge graphs, RDF, SPARQL, entity search, Linked Data exploration}
 \maketitle
+% Keep normal section spacing; leave unused column space at the bottom.
+\raggedbottom
 \input{body}
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
