@@ -3,7 +3,7 @@
 **Title:** TriplePeek: From Entity Search to Live Linked Data Exploration  
 **Authors:** Albert Khomich, Mohamed Ahmed Sherif, Axel-Cyrille Ngonga Ngomo
 
-**Status:** Technical system/demo draft, updated 25 September 2026 with author information and an explicit six-endpoint test inventory and two sets of six observed search timings for a 20-million-entity catalog.
+**Status:** Technical system/demo draft, updated 25 September 2026 with author information and an explicit six-endpoint test inventory and two sets of six observed search timings for a 17,795,730-entity catalog.
 
 ## Open in Overleaf
 
@@ -40,7 +40,7 @@ Or run `pdflatex`, `bibtex`, and `pdflatex` twice. Both entry points were also c
 - `EDITOR_NOTES.md`: provenance, validation scope, and remaining author decisions.
 - `vendor/`: upstream class sources, license notices, and provenance.
 
-The revised draft incorporates Albert Khomich's exploratory endpoint tests and qualitative experience with a 20-million-entity catalog. These tests were not rerun during the editorial update. The author-supplied search durations, including the additional localhost Network-panel capture with browser caching disabled, are reported as exploratory observations, not a controlled benchmark; no numerical endpoint latency, throughput, or user-study results are asserted. The draft includes the demo plan and ethical-data section. The tests took place on 25 September 2026 on a VMware VM with 8 vCPUs (Intel Xeon Platinum 8462Y+), 31 GiB RAM, and a 1 TB ext4 virtual disk; application and database ran in separate containers on this VM. Evaluation separates local search performance from button and catalog-generator compatibility; external endpoint response times are outside scope. Prepare supporting demo materials before submission.
+The revised draft incorporates Albert Khomich's exploratory endpoint tests and qualitative experience with a 17,795,730-entity catalog. These tests were not rerun during the editorial update. The author-supplied search durations, including the additional localhost Network-panel capture with browser caching disabled, are reported as exploratory observations, not a controlled benchmark; no numerical endpoint latency, throughput, or user-study results are asserted. The draft includes the demo plan and ethical-data section. The tests took place on 25 September 2026 on a VMware VM with 8 vCPUs (Intel Xeon Platinum 8462Y+), 31 GiB RAM, and a 1 TB ext4 virtual disk; application and database ran in separate containers on this VM. Evaluation separates local search performance from button and catalog-generator compatibility; external endpoint response times are outside scope. Prepare supporting demo materials before submission.
 
 ## Reproducibility paths
 
@@ -48,4 +48,4 @@ The revised draft incorporates Albert Khomich's exploratory endpoint tests and q
 Clone https://github.com/dice-group/triple-peek and follow https://dice-group.github.io/triple-peek/ using the bundled 10,000-entity catalog. This reproduces the live visitor demonstration: search for Neuschwanstein Castle, navigate with Describe, open Details, and retrieve the precomputed representation with Embedding. Live actions require the configured endpoints. The separate catalog/template configuration walkthrough is operator-led.
 
 ### Large-catalog experiment
-Download the archived 20-million-entity CSV from https://zenodo.org/records/22958238, then follow the documented validation and PostgreSQL import pipeline. With the catalog loaded, use localhost and disable browser caching. Reproduce the captured search request sequence with limit=20: neusch, italy, italy cast, neusch, muse, museum. Record request durations in the browser Network panel. These observations are distinct from the earlier Berlin place typing session, whose exact per-request prefixes were not recorded. Search operates locally; do not time external SPARQL services or repeat the same search workload merely because the remote endpoint changes.
+Download the archived 17,795,730-entity CSV from https://zenodo.org/records/22958238, then follow the documented validation and PostgreSQL import pipeline. With the catalog loaded, use localhost and disable browser caching. Reproduce the captured search request sequence with limit=20: neusch, italy, italy cast, neusch, muse, museum. Record request durations in the browser Network panel. These observations are distinct from the earlier Berlin place typing session, whose exact per-request prefixes were not recorded. Search operates locally; do not time external SPARQL services or repeat the same search workload merely because the remote endpoint changes.
